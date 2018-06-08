@@ -62,7 +62,7 @@ the `Import Projects` page, select the `RHDM Demo` project and press
 the `Ok` button on the far right.
 
 The RHDM Demo project will appear with two items:  a guided decision
-table and a single data ojbect.  Feel free to explore these.  When
+table and a single data object.  Feel free to explore these.  When
 done, press the `Build & Deploy` button on the right.  If you see
 a `Conflicting Repositories` pop-up, just click the `Override`
 button.
@@ -83,14 +83,15 @@ In the terminal window with the Fuse console, simply type:
 
     log:display
 
-to see log messages of the orders being processed.  Each order had
+to see log messages of the orders being processed.  Each order has
 a geographic region assigned via the REST interface to the guided
-decision table on the KIE server.
+decision table on the KIE server.  The orders are also archived at
+`work/eip/archives` and they are sorted by geographic region at
+`work/eip/output`.
 
-### Hawtio Console
-You can also browse to http://localhost:8181/hawtio and then select
-`Camel` on the left hand side to see the live metrics for the route
-as the messages were processed.
+### Hawtio Console You can also browse to http://localhost:8181/hawtio
+and then select `Camel` on the left hand side to see the live metrics
+for the route as the messages were processed.
 
 ## Shutdown and Clean Up
 Simply `CTRL-C` in the window where you started RHDM.  For Fuse,
