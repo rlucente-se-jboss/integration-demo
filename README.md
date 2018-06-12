@@ -19,6 +19,12 @@ Please review the `demo.conf` configuration file.  If you change
 any of the variables for the distribution versions, make sure that
 they match the binaries in the `dist` folder.
 
+### Start AMQ
+In a separate terminal window, install and start AMQ using the commands:
+
+    ./install-amq.sh
+    ./start-amq.sh
+
 ### Start Fuse
 In a separate terminal window, install and start Fuse using the commands:
 
@@ -89,9 +95,10 @@ decision table on the KIE server.  The orders are also archived at
 `work/eip/archives` and they are sorted by geographic region at
 `work/eip/output`.
 
-### Hawtio Console You can also browse to http://localhost:8181/hawtio
-and then select `Camel` on the left hand side to see the live metrics
-for the route as the messages were processed.
+### Hawtio Console
+You can also browse to http://localhost:8181/hawtio and then select
+`Camel` on the left hand side to see the live metrics for the route
+as the messages were processed.
 
 ## Shutdown and Clean Up
 Simply `CTRL-C` in the window where you started RHDM.  For Fuse,
