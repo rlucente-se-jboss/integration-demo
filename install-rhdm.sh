@@ -34,11 +34,11 @@ PUSHD $WORKDIR
     TMPDIR=tmp.$$
     mkdir -p $TMPDIR
     PUSHD $TMPDIR
-        echo -n "Extract RHDM kie server ......... "
+        echo -n "Extract RHDM KIE server ......... "
         unzip -qo $BINDIR/rhdm-$VER_DIST_RHDM-kie-server-ee7.zip
         ISOK
 
-        echo -n "Install kie server war .......... "
+        echo -n "Install KIE server war .......... "
         cp -fr kie-server.war $JBOSS_HOME/standalone/deployments
         touch $JBOSS_HOME/standalone/deployments/kie-server.war.dodeploy
         ISOK
@@ -69,6 +69,10 @@ END1
     $JBOSS_HOME/bin/jboss-cli.sh --file=sysprops.cli &> /dev/null
     ISOK
     rm -f sysprops.cli
+
+    echo -n "Setting admin password .......... "
+    ${JBOSS_HOME}/bin/add-user.sh -p "${ADMIN_PASS}" -u "${ADMIN_USER}" --silent
+    ISOK
 
     echo "Done."
     echo
