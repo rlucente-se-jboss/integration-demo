@@ -22,6 +22,13 @@ PUSHD ${WORKDIR}
         amq-demo &> /dev/null
     ISOK
 
+    echo -n "Creating topic .... "
+    sed -i.bak 's/\(^  *<\/addresses>\)/         <address name="orderTopic">\
+            <multicast \/>\
+         <\/address>\
+\1/g' amq-demo/etc/broker.xml
+    ISOK
+
     echo "Done."
     echo
 POPD
