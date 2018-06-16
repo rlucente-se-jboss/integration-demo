@@ -114,13 +114,15 @@ In the terminal window with the Fuse console, simply type:
 to see log messages of the orders being processed.
 
 ### Hawtio Console
-You can also browse to http://localhost:8181/hawtio and then select
-`Camel` on the left hand side to see the live metrics for the route
-as the messages were processed.
+You can browse to http://localhost:8181/hawtio and login using
+the credentials `admin/admin` (unless you changed them in the
+`demo.conf` file).  Next, select `Camel` on the left hand side to
+see the live metrics for the route as the messages were processed.
 
 ### AMQ Console
-You can see the AMQ console at http://localhost:8161 and then examine
-the destination addresses.
+You can browse to http://localhost:8161/console and login using the
+credentials `admin/admin1jboss!` (unless you changed them in the
+`demo.conf` file).  Next, examine the destination addresses.
 
 ## Shutdown and Clean Up
 Simply `CTRL-C` in the windows where you started RHDM and AMQ.  For
