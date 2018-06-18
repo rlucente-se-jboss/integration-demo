@@ -1,10 +1,18 @@
 # Integration Demo
 This is a simple integration demo where a camel route processes
-orders and uses RHDM kieserver as a RESTful service to assign
-geographic regions to each order.  The orders are placed into
-dynamically created folders by region.  The RHDM project contains
-a guided decision table where each country code is mapped to a
-region and a simple POJO to represent the country code and region.
+orders, where each order represents animals being shipped to zoos
+around the world.  RHDM kieserver is leveraged as a RESTful service
+to implement policy decisions.
+
+RHDM will assign geographic regions to each order based on their
+country code, but since each order is fully modeled in RHDM, more
+complex policy can be used to assign geographic regions.  RHDM also
+uses a rule to determine if an order requires special handling.
+This is currently based on the total number of animals in the order,
+but more sophisticated policy can be implemented via rules.
+
+Once policy determinations are made, the camel route places orders
+into dynamically created folders by region.
 
 The camel route is based on the Fuse Quickstart camel-eips.
 
