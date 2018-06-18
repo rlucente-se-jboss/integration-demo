@@ -30,17 +30,29 @@ In a separate terminal window, install and start AMQ using the commands:
     ./install-amq.sh
     ./start-amq.sh
 
+AMQ is fully started when you see a line in the log output similar
+to the following:
+
+    2018-06-18 09:48:53,359 INFO  [org.apache.activemq.artemis] AMQ241004: Artemis Console available at http://localhost:8161/console
+
 ### Start Fuse
 In a separate terminal window, install and start Fuse using the commands:
 
     ./install-fuse.sh
     ./start-fuse.sh
 
+Fuse is fully started when you see the prompt `karaf@root()>`.
+`
 ### Start RHDM
 In a separate terminal window, install and start RHDM using the commands:
 
     ./install-rhdm.sh
     ./start-rhdm.sh
+
+When you see a line similar to the following in the log output,
+then RHDM is ready:
+
+    09:49:33,964 INFO  [org.kie.workbench.common.screens.datasource.management.backend.DataSourceManagementBootstrap] (pool-9-thread-1) Initialize deployments task finished successfully.
 
 ## Run the Demo
 ### Build the Camel Bundle
