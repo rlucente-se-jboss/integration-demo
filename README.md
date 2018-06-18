@@ -71,6 +71,16 @@ Fuse), type the following commands:
     features:install camel-http4
     bundle:install -s mvn:com.redhat/fuse-amq-dm-demo/1.0.0-SNAPSHOT
 
+To determine if the route deployed successfully, issue the command:
+
+    bundle:list
+
+You should see a line in the output similar to:
+
+    237 │ Active │  80 │ 1.0.0.SNAPSHOT              │ RedHat Demo
+
+This indicates that the route bundle deployed and it's active.
+
 ### Build and Deploy the KIE Jar
 Browse to the decision-central web application at
 http://localhost:8080/decision-central and login using the default
