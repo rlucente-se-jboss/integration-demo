@@ -65,10 +65,36 @@ embed-server --server-config=standalone.xml
 /system-property=org.kie.server.controller:add(value="http://localhost:8080/decision-central/rest/controller")
 stop-embedded-server
 END1
+
     echo -n "Configure system properties ..... "
     $JBOSS_HOME/bin/jboss-cli.sh --file=sysprops.cli &> /dev/null
     ISOK
     rm -f sysprops.cli
+
+    echo -n "Add PostgreSQL module ........... "
+    $JBOSS_HOME/bin/jboss-cli.sh --command="module add --name=org.postgresql \
+        --resources=$BINDIR/$PGJDBC --dependencies=javax.api,javax.transaction.api" \
+        &> /dev/null
+    ISOK
+
+    cat > config-ds.cli <<END2
+embed-server --server-config=standalone.xml
+/subsystem=datasources/jdbc-driver=postgresql:add(driver-name=postgresql, driver-module-name=org.postgresql, driver-xa-datasource-class-name=org.postgresql.xa.PGXADataSource, driver-class-name=org.postgresql.Driver)
+data-source add  --name=$PGJNDI --driver-name=postgresql \
+    --jndi-name="java:jboss/datasources/$PGJNDI" \
+    --connection-url="jdbc:postgresql://localhost:5432/$PGDBNAME" \
+    --use-java-context=true --enabled=true \
+    --user-name="$PGUSER" --password="$PGPASS" \
+    --validate-on-match=true \
+    --valid-connection-checker-class-name=org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLValidConnectionChecker \
+    --exception-sorter-class-name=org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLExceptionSorter
+stop-embedded-server
+END2
+
+    echo -n "Add PostgreSQL datasource ....... "
+    $JBOSS_HOME/bin/jboss-cli.sh --file=config-ds.cli &> /dev/null
+    ISOK
+    rm -f config-ds.cli
 
     echo -n "Setting admin password .......... "
     ${JBOSS_HOME}/bin/add-user.sh -p "${ADMIN_PASS}" -u "${ADMIN_USER}" --silent
