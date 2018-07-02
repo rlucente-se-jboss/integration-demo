@@ -24,6 +24,18 @@ Please review the `demo.conf` configuration file.  If you change
 any of the variables for the distribution versions, make sure that
 they match the binaries in the `dist` folder.
 
+### Start RHDM
+In a separate terminal window, install and start RHDM using the commands:
+
+    ./init-postgresql.sh
+    ./install-rhdm.sh
+    ./start-rhdm.sh
+
+When you see a line similar to the following in the log output,
+then RHDM is ready:
+
+    09:49:33,964 INFO  [org.kie.workbench.common.screens.datasource.management.backend.DataSourceManagementBootstrap] (pool-9-thread-1) Initialize deployments task finished successfully.
+
 ### Start AMQ
 In a separate terminal window, install and start AMQ using the commands:
 
@@ -42,17 +54,6 @@ In a separate terminal window, install and start Fuse using the commands:
     ./start-fuse.sh
 
 Fuse is fully started when you see the prompt `karaf@root()>`.
-`
-### Start RHDM
-In a separate terminal window, install and start RHDM using the commands:
-
-    ./install-rhdm.sh
-    ./start-rhdm.sh
-
-When you see a line similar to the following in the log output,
-then RHDM is ready:
-
-    09:49:33,964 INFO  [org.kie.workbench.common.screens.datasource.management.backend.DataSourceManagementBootstrap] (pool-9-thread-1) Initialize deployments task finished successfully.
 
 ## Run the Demo
 ### Build the Camel Bundle
